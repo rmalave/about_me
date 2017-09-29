@@ -1,9 +1,39 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400,700');
+
 * {
-  font-family: sans-serif;
-  font-size: 60px;
+  font-family: 'Lato', Arial, sans-serif;
+  font-weight: 300;
 }
 
+body {
+  font-size: 16px;
+  color: #46506d;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+}
 h1 {
-  color: black;
-  text-align: center;
+  font-size: 28px;
+}
+h1,h2,h3,h4,h5,h6 {
+  font-weight: 700;
+}
+
+ul li {
+  font-size: 16px;
+  font-family: 'Lato', Arial, sans-serif;
+  font-weight: 300;
+}
+
+.guessing-button {
+  font-size: 18px;
+  background-color: #FFB413;
+  border: 1px solid #FFB413;
+  color: white;
+}
+
+.guessing-button:hover {
+  background-color: #C3B189;
 }
