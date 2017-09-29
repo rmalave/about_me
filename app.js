@@ -15,7 +15,7 @@ if(answer1 === 'yes' || answer1 === 'y') {
   console.log('answer1 = ' + answer1);
   console.log('score = ' + score);
 } else {
-  alert('Score: ' + score + 'Wrong answer! I love videogames!');
+  alert('Score: ' + score + '\nWrong answer! I love videogames!');
   console.log('answer1 = ' + answer1);
   console.log('score = ' + score);
 }
@@ -66,4 +66,12 @@ if(answer5 === 'yes' || answer5 === 'y') {
   alert('Score: ' + score + '\nNope! wrong answer.');
   console.log('answer4 = ' + answer4);
   console.log('score = ' + score);
+}
+
+if(score === 5) {
+  alert('Nice! Perfect score! Score: ' + score);
+} else if(score >= 3) {
+  alert('Not bad! you guessed most of them! Score: ' + score);
+} else if(score < 3) {
+  alert('Better luck next time! Score: ' + score);
 }
