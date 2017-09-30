@@ -1,7 +1,6 @@
 'use strict';
 
-var userPoints = 0;
-var user, score = 0, answer1, answer2, answer3, answer4, answer5;
+var user, question, answer, score = 0, answer1, answer2, answer3, answer4, answer5;
 
 user = prompt('Hi, what is your name?').toLowerCase();
 console.log('user = ' + user);
