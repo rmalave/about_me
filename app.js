@@ -1,6 +1,6 @@
 'use strict';
 
-var user, answer6, answer, score = 0;
+var user, answer6, answer7, answer, score = 0;
 
 var questions = [
   'Do I like videogames?',
@@ -26,6 +26,17 @@ var responses = [
   'Nope! Sadly. I would love to learn to paint.'
 ];
 
+var placesILived = [
+  'Puerto Rico',
+  'California',
+  'Idaho',
+  'Germany',
+  'New York',
+  'Texas',
+  'Oregon',
+  'Paris'
+];
+
 user = prompt('Hi, what is your name?').toLowerCase();
 console.log('user = ' + user);
 
@@ -44,18 +55,22 @@ for(var i = 0; i < questions.length; i++) {
 }
 */
 
-answer6 = parseInt(prompt('What is my favorite number. HINT: between 2-6.'));
-while(answer6 !== 3) {
-  if(answer6 < 3) {
-    alert('Too low! try again?');
-    answer6 = parseInt(prompt('What is my favorite number. HINT: between 2-6.'));
-  } else if(answer6 > 3) {
-    alert('Too high! try again?');
-    answer6 = parseInt(prompt('What is my favorite number. HINT: between 2-6.'));
+/*
+var chances = 4;
+do{
+  answer6 = parseInt(prompt('What is my favorite number. HINT: between 2-6.'));
+  if(answer6 < 3 && chances > 0) {
+    chances--;
+    alert('Too low! try again? You have ' + chances + ' more chances!');
+  } else if(answer6 > 3 && chances > 0) {
+    chances--;
+    alert('Too high! try again? You have ' + chances + ' more chances!');
   }
-}
+}while(answer6 !== 3 && chances > 0);
+*/
 
-alert('Yes! 3 is my favorite number');
+answer7 = prompt('Can you guess a place I\'ve lived before Seattle? ' + placesILived).toLowerCase();
+
 /*
 if(score === answers.length) {
   alert('Perfect Score! Score: ' + score + '/' + answers.length);
