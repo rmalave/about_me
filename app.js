@@ -1,6 +1,7 @@
 'use strict';
 
-var user, answer6, answer7, answer, score = 0;
+var score = 0;
+
 // List of questions to ask user
 var questions = ['Do I like videogames?', 'Is my favorite hobby photography?',
   'Do I have any pets?', 'Do I like to go hiking?', 'Do I paint?'
@@ -23,11 +24,12 @@ var placesILived = ['Spain', 'California', 'Idaho', 'Germany', 'New York',
 ];
 
 //Store user's name
-user = prompt('Hi, what is your name?').toLowerCase();
+var user = prompt('Hi, what is your name?').toLowerCase();
 console.log('user = ' + user);
 alert(user + ', welcome to my guessing game. Let\'s see if you can guess a few things about me');
 
 // Loop through questions and reply with appropriate response
+var answer;
 for(var i = 0; i < questions.length; i++) {
   answer = prompt(questions[i] + '( yes or no).').toLowerCase();
   console.log(answer);
@@ -39,6 +41,7 @@ for(var i = 0; i < questions.length; i++) {
   }
 }
 
+var answer6;
 for(var i = 4; i > 0; i--) {
   answer6 = parseInt(prompt('What is my favorite number. HINT: between 2-6. You have ' + i + ' guesses left!'));
   if(answer6 === 3) {
@@ -53,6 +56,7 @@ for(var i = 4; i > 0; i--) {
 }
 alert('You ran out of guesses! The correct answer is 3!');
 
+var answer7;
 for(var i = 6; i > 0; i--) {
   answer7 = prompt('Guess a place I have lived before? You have ' + i + ' guesses left. ' + placesILived);
   console.log('answer7 = ' + answer7);
