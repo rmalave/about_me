@@ -1,88 +1,51 @@
 'use strict';
 
+var questions = [
+  ['Do I like videogames. Type Yes or No?', 'yes', 'y'],
+  ['Is my favorite hobby photography?', 'yes', 'y'],
+  ['Do I have any pets?', 'no', 'n'],
+  ['Do I like to go hiking?', 'no', 'n'],
+  ['Do I paint?', 'no', 'n']
+];
+
+var responses = [
+  ['Yes! I love to play games! When I have time that is', 'Wrong. I love videogames.'],
+  ['Right! I love hiking/backpacking to beautifull places and taking photos!','Sorry, that\'s wrong.'],
+  ['Do I have any pets?', 'No, I\'m sorry that isn\'t correct either.'],
+  ['Yes! you probably remember I mentioned I like to take photos when I hike ;)', 'Incorrect!'],
+  ['Nope! Sadly. I would love to learn to paint!', 'Sorry, that is not right.']
+];
+
+var user;
 var userPoints = 0;
 // List for last question
 var placesILived = ['Spain', 'California', 'Idaho', 'Germany', 'New York',
   'Texas', 'Oregon', 'Paris'
 ];
 
-//Store user's name
-var user = prompt('Hi, what is your name?').toLowerCase();
-console.log('user = ' + user);
-alert(user + ', welcome to my guessing game. Let\'s see if you can guess a few things about me');
+//Questions
+function question() {
+  user = prompt('Hi, what is your name?');
+  console.log('user = ' + user);
 
-//Question 1
-function question1() {
-  var answer = prompt('Do I like videogames. Type Yes or No').toLowerCase();
-  console.log('First question, user has started with zero points.');
+  alert(user + ', welcome to my guessing game. Let\'s see if you can guess a few things about me');
 
-  if(answer === 'yes' || answer === 'y') {
-    alert('Yes! I love to play games! When I have time that is.');
-    userPoints++;
-    console.log(userPoints);
-  } else {
-    alert('Wrong. I love videogames.');
+  var answer;
+  for (var i = 0; i < questions.length; i++) {
+    answer = prompt(questions[i][0]).toLowerCase();
+    console.log(questions[i][0]);
+    console.log(answer);
+
+    if(answer === questions[i][1] || answer === questions[i][2]) {
+      userPoints++;
+      console.log(' user points = ' + userPoints);
+      alert(responses[i][0] + ' You have ' + userPoints + ' points.');
+    } else {
+      alert(responses[i][1] + ' You have ' + userPoints + ' points.');
+    }
   }
 }
-question1();
-
-//Question 2
-function question2() {
-  var answer1 = prompt('Is my favorite hobby photography?').toLowerCase();
-  console.log('After Question 1, user has ' + userPoints + '!');
-
-  if(answer1 === 'yes' || answer1 === 'y') {
-    alert('Right! I love hiking/backpacking to beautifull places and taking photos');
-    userPoints++;
-    console.log(userPoints);
-  } else {
-    alert('Sorry, that\'s wrong.');
-  }
-}
-question2();
-
-//Question 3
-function question3() {
-  var answer2 = prompt('Do I have any pets?').toLowerCase();
-  console.log();
-  if(answer2 === 'no' || answer2 === 'n') {
-    alert('Nope. But I would love to have a dog in the future!');
-    //userPoints++;
-    console.log(userPoints);
-  } else {
-    alert('No, I\'m sorry that isn\'t correct either.');
-  }
-}
-question3();
-
-//Question 4
-function question4() {
-  var answer3 = prompt('Do I like to go hiking?').toLowerCase();
-  console.log(answer3);
-  if(answer3 === 'no' || answer3 === 'n') {
-    alert('Yes! you probably remember I mentioned I like to take photos when I hike ;)');
-    userPoints++;
-    console.log(userPoints);
-  } else {
-    alert('Incorrect!');
-  }
-}
-question4();
-
-//Question 5
-function question5() {
-  var answer4 = prompt('Do I paint?').toLowerCase();
-  console.log('user answered and has ' + userPoints + ' so far');
-
-  if(answer4 === 'no' || answer4 === 'n') {
-    alert('Nope! Sadly. I would love to learn to paint.' + userPoints + ' /5!');
-    userPoints++;
-    console.log(userPoints);
-  } else {
-    alert('Sorry, that is not right.');
-  }
-}
-question5();
+question();
 
 function question6() {
   var answer6;
@@ -118,6 +81,7 @@ function question7() {
     }
   }
   alert('You ran out of guesses! The correct answer is Germany!');
+
   // Show total number of correct answers to the user
   alert('You got ' + userPoints + ' out of 7 questions correct ' + user + '!');
 }
