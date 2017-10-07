@@ -1,76 +1,88 @@
 'use strict';
 
-var user, question, answer, score = 0, answer1, answer2, answer3, answer4, answer5;
+var questions = [
+  ['Do I like videogames. Type Yes or No?', 'yes', 'y'],
+  ['Is my favorite hobby photography?', 'yes', 'y'],
+  ['Do I have any pets?', 'no', 'n'],
+  ['Do I like to go hiking?', 'no', 'n'],
+  ['Do I paint?', 'no', 'n']
+];
 
-user = prompt('Hi, what is your name?').toLowerCase();
-console.log('user = ' + user);
+var responses = [
+  ['Yes! I love to play games! When I have time that is', 'Wrong. I love videogames.'],
+  ['Right! I love hiking/backpacking to beautifull places and taking photos!','Sorry, that\'s wrong.'],
+  ['Do I have any pets?', 'No, I\'m sorry that isn\'t correct either.'],
+  ['Yes! you probably remember I mentioned I like to take photos when I hike ;)', 'Incorrect!'],
+  ['Nope! Sadly. I would love to learn to paint!', 'Sorry, that is not right.']
+];
 
-alert(user + ', welcome to my guessing game. Let\'s see if you can guess a few things about me');
+var user;
+var userPoints = 0;
+// List for last question
+var placesILived = ['Spain', 'California', 'Idaho', 'Germany', 'New York',
+  'Texas', 'Oregon', 'Paris'
+];
 
-answer1 = prompt('Do I like videogames? Type yes or no').toLowerCase();
-if(answer1 === 'yes' || answer1 === 'y') {
-  score++;
-  alert('Score: ' + score + '\nOh yeah. I love me some videogames.');
-  console.log('answer1 = ' + answer1);
-  console.log('score = ' + score);
-} else {
-  alert('Score: ' + score + '\nWrong answer! I love videogames!');
-  console.log('answer1 = ' + answer1);
-  console.log('score = ' + score);
+//Questions
+function question() {
+  user = prompt('Hi, what is your name?');
+  console.log('user = ' + user);
+
+  alert(user + ', welcome to my guessing game. Let\'s see if you can guess a few things about me');
+
+  var answer;
+  for (var i = 0; i < questions.length; i++) {
+    answer = prompt(questions[i][0]).toLowerCase();
+    console.log(questions[i][0]);
+    console.log(answer);
+
+    if(answer === questions[i][1] || answer === questions[i][2]) {
+      userPoints++;
+      console.log(' user points = ' + userPoints);
+      alert(responses[i][0] + ' You have ' + userPoints + ' points.');
+    } else {
+      alert(responses[i][1] + ' You have ' + userPoints + ' points.');
+    }
+  }
 }
+question();
 
-answer2 = prompt('Is Rafael\s favorite hobby photography? Type yes or no').toLowerCase();
-if(answer2 === 'yes' || answer2 === 'y') {
-  score++;
-  alert('Score: ' + score + '\nPhotography is one of my favorite hobbies');
-  console.log('answer1 = ' + answer2);
-  console.log('score = ' + score);
-} else {
-  alert('Score: ' + score + '\nWrong! I love photography!');
-  console.log('answer2 = ' + answer2);
-  console.log('score = ' + score);
+function question6() {
+  var answer6;
+  for(var i = 4; i > 0; i--) {
+    answer6 = parseInt(prompt('What is my favorite number. HINT: between 2-6. You have ' + i + ' guesses left!'));
+    if(answer6 === 3) {
+      userPoints++;
+      alert('Correct! the answer is 3!');
+      break;
+    } else if(answer6 < 3) {
+      alert('Too low!');
+    } else if(answer6 > 3) {
+      alert('Too high!');
+    }
+  }
+  alert('You ran out of guesses! The correct answer is 3!');
 }
+question6();
 
-answer3 = prompt('Do you think I like to exercise? Type yes or no').toLowerCase();
-if(answer3 === 'yes' || answer3 === 'y') {
-  score++;
-  alert('Score: ' + score + '\nNice job! I love to exercise.');
-  console.log('answer3 = ' + answer3);
-  console.log('score = ' + score);
-} else {
-  alert('Score: ' + score + '\nWrong! I love to exercise!');
-  console.log('answer3 = ' + answer3);
-  console.log('score = ' + score);
-}
+function question7() {
+  var answer7;
+  for(var i = 6; i > 0; i--) {
+    answer7 = prompt('Guess a place I have lived before? You have ' + i + ' guesses left. ' + placesILived);
+    console.log('answer7 = ' + answer7);
+    if(placesILived.indexOf(answer7) > -1) {
+      userPoints++;
+      alert('Correct! I have lived in ' + answer7 + '.');
+      break;
+    } else if(answer7 < 3) {
+      alert('Too low!');
+    } else if(answer7 > 3) {
+      alert('Too high!');
+    }
+  }
+  alert('You ran out of guesses! The correct answer is Germany!');
 
-answer4 = prompt('Do you think I like beer? Type yes or no').toLowerCase();
-if(answer4 === 'yes' || 'y') {
-  score++;
-  alert('Score: ' + score + '\nYes! I love to open a cold one after a long day at work.');
-  console.log('answer4 = ' + answer4);
-  console.log('score = ' + score);
-} else {
-  alert('Score: ' + score + '\nWrong! I like a beer after a long day at work.');
-  console.log('answer4 = ' + answer4);
-  console.log('score = ' + score);
+  // Show total number of correct answers to the user
+  alert('You got ' + userPoints + ' out of 7 questions correct ' + user + '!');
 }
-
-answer5 = prompt('Is my favorite color blue? Type yes or no').toLowerCase();
-if(answer5 === 'yes' || answer5 === 'y') {
-  score++;
-  alert('Score: ' + score + '\nYes! right answer.');
-  console.log('answer4 = ' + answer4);
-  console.log('score = ' + score);
-} else {
-  alert('Score: ' + score + '\nNope! wrong answer.');
-  console.log('answer4 = ' + answer4);
-  console.log('score = ' + score);
-}
-
-if(score === 5) {
-  alert('Nice! Perfect score! Score: ' + score);
-} else if(score >= 3) {
-  alert('Not bad! you guessed most of them! Score: ' + score);
-} else if(score < 3) {
-  alert('Better luck next time! Score: ' + score);
-}
+question7();
