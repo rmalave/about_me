@@ -10,6 +10,7 @@ var questions = ['Do I like videogames?', 'Is my favorite hobby photography?',
 // List of answers for each question
 var answers = ['yes', 'yes', 'no', 'yes', 'no',
 ];
+
 // Responses to each question.
 var responses = [
   'Yes! I love to play games! When I have time that is.',
@@ -18,6 +19,7 @@ var responses = [
   'Yes! you probably remember I mentioned I like to take photos when I hike ;)',
   'Nope! Sadly. I would love to learn to paint.'
 ];
+
 // List for last question
 var placesILived = ['Spain', 'California', 'Idaho', 'Germany', 'New York',
   'Texas', 'Oregon', 'Paris'
