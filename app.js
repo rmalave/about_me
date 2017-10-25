@@ -21,58 +21,80 @@ var responses = [
 ];
 
 // List for last question
-var placesILived = ['Spain', 'California', 'Idaho', 'Germany', 'New York',
-  'Texas', 'Oregon', 'Paris'
+var placesILived = ['Puerto Rico', 'California', 'Germany'
 ];
 
-//Store user's name
-var user = prompt('Hi, what is your name?').toLowerCase();
-console.log('user = ' + user);
-alert(user + ', welcome to my guessing game. Let\'s see if you can guess a few things about me');
+// //Store user's name
+// var user = prompt('Hi, what is your name?').toLowerCase();
+// console.log('user = ' + user);
+// alert(user + ', welcome to my guessing game. Let\'s see if you can guess a few things about me');
+//
+// // Loop through questions and reply with appropriate response
+// var answer;
+// for(var i = 0; i < questions.length; i++) {
+//   answer = prompt(questions[i] + '( yes or no).').toLowerCase();
+//   console.log(answer);
+//   if(answer === answers[i]) {
+//     score++;
+//     alert(responses[i] + ' Score: ' + score);
+//   } else {
+//     alert('Wrong answer!');
+//   }
+// }
+//
+// var answer6;
+// for(var i = 4; i > 0; i--) {
+//   answer6 = parseInt(prompt('What is my favorite number. HINT: between 2-6. You have ' + i + ' guesses left!'));
+//   if(answer6 === 3) {
+//     score++;
+//     alert('Correct! the answer is 3!');
+//     break;
+//   } else if(answer6 < 3) {
+//     alert('Too low!');
+//   } else if(answer6 > 3) {
+//     alert('Too high!');
+//   }
+// }
+// alert('You ran out of guesses! The correct answer is 3!');
 
-// Loop through questions and reply with appropriate response
-var answer;
-for(var i = 0; i < questions.length; i++) {
-  answer = prompt(questions[i] + '( yes or no).').toLowerCase();
-  console.log(answer);
-  if(answer === answers[i]) {
+// var answer7;
+// for(var i = 6; i > 0; i--) {
+//   answer7 = prompt('Guess a place I have lived before? You have ' + i + ' guesses left. ' + placesILived);
+//   console.log('answer7 = ' + answer7);
+//   for(var j = 0; j < placesILived.length; j++) {
+//     if(answer7 == placesILived[j]) {
+//       score++;
+//       alert('Correct! I have lived in ' + answer7 + '.');
+//       break;
+//     }
+//   }
+// }
+
+function checkGuess(answer) {
+  for(var i = 0; i < placesILived.length; i++) {
+    if(answer == placesILived[i]) {
+      return true;
+    }
+  }
+  return false;
+}
+
+var attempts = 6;
+var answer7 = prompt('Guess a place I have lived besides Washington? You have 6 guesses! ');
+while(attempts != 1) { 
+  if(checkGuess(answer7)) {
+    alert('Yes! You got it right!');
     score++;
-    alert(responses[i] + ' Score: ' + score);
+    break;
   } else {
-    alert('Wrong answer!');
+    attempts--;
+    alert('Sorry, wrong answer!');
+    answer7 = prompt('Try again! You have ' + attempts + ' guesses left!');
   }
 }
-
-var answer6;
-for(var i = 4; i > 0; i--) {
-  answer6 = parseInt(prompt('What is my favorite number. HINT: between 2-6. You have ' + i + ' guesses left!'));
-  if(answer6 === 3) {
-    score++;
-    alert('Correct! the answer is 3!');
-    break;
-  } else if(answer6 < 3) {
-    alert('Too low!');
-  } else if(answer6 > 3) {
-    alert('Too high!');
-  }
+if (attempts == 1) {
+  alert('You ran out of guesses! Try again next time!');
 }
-alert('You ran out of guesses! The correct answer is 3!');
-
-var answer7;
-for(var i = 6; i > 0; i--) {
-  answer7 = prompt('Guess a place I have lived before? You have ' + i + ' guesses left. ' + placesILived);
-  console.log('answer7 = ' + answer7);
-  if(placesILived.indexOf(answer7) > -1) {
-    score++;
-    alert('Correct! I have lived in ' + answer7 + '.');
-    break;
-  } else if(answer6 < 3) {
-    alert('Too low!');
-  } else if(answer6 > 3) {
-    alert('Too high!');
-  }
-}
-alert('You ran out of guesses! The correct answer is Germany!');
 
 // Show total number of correct answers to the user
 alert('You got ' + score + ' out of ' + questions.length + ' questions correct ' + user + '!');
