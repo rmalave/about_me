@@ -24,51 +24,40 @@ var responses = [
 var placesILived = ['Puerto Rico', 'California', 'Germany'
 ];
 
-// //Store user's name
-// var user = prompt('Hi, what is your name?').toLowerCase();
-// console.log('user = ' + user);
-// alert(user + ', welcome to my guessing game. Let\'s see if you can guess a few things about me');
-//
-// // Loop through questions and reply with appropriate response
-// var answer;
-// for(var i = 0; i < questions.length; i++) {
-//   answer = prompt(questions[i] + '( yes or no).').toLowerCase();
-//   console.log(answer);
-//   if(answer === answers[i]) {
-//     score++;
-//     alert(responses[i] + ' Score: ' + score);
-//   } else {
-//     alert('Wrong answer!');
-//   }
-// }
-//
-// var answer6;
-// for(var i = 4; i > 0; i--) {
-//   answer6 = parseInt(prompt('What is my favorite number. HINT: between 2-6. You have ' + i + ' guesses left!'));
-//   if(answer6 === 3) {
-//     score++;
-//     alert('Correct! the answer is 3!');
-//     break;
-//   } else if(answer6 < 3) {
-//     alert('Too low!');
-//   } else if(answer6 > 3) {
-//     alert('Too high!');
-//   }
-// }
-// alert('You ran out of guesses! The correct answer is 3!');
+ //Store user's name
+var user = prompt('Hi, what is your name?').toLowerCase();
+console.log('user = ' + user);
+alert(user + ', welcome to my guessing game. Let\'s see if you can guess a few things about me');
 
-// var answer7;
-// for(var i = 6; i > 0; i--) {
-//   answer7 = prompt('Guess a place I have lived before? You have ' + i + ' guesses left. ' + placesILived);
-//   console.log('answer7 = ' + answer7);
-//   for(var j = 0; j < placesILived.length; j++) {
-//     if(answer7 == placesILived[j]) {
-//       score++;
-//       alert('Correct! I have lived in ' + answer7 + '.');
-//       break;
-//     }
-//   }
-// }
+// Loop through questions and reply with appropriate response
+var answer;
+for(var i = 0; i < questions.length; i++) {
+  answer = prompt(questions[i] + '( yes or no).').toLowerCase();
+  console.log(answer);
+  if(answer === answers[i]) {
+    score++;
+    alert(responses[i] + ' Score: ' + score);
+  } else {
+    alert('Wrong answer!');
+  }
+}
+
+var attempts = 4;
+var answer6 = prompt('Can you guess my favorite number? HINT: 2-8');
+while(attempts != 1) { 
+  if(answer6 == '3') {
+    alert('Yes! You got it right! My favorite number is 3!');
+    score++;
+    break;
+  } else {
+    attempts--;
+    alert('Sorry, wrong answer!');
+    answer6 = prompt('Try again! You have ' + attempts + ' guesses left!');
+  }
+}
+if (attempts == 1) {
+  alert('You ran out of guesses! My favorite number is 3!');
+}
 
 function checkGuess(answer) {
   for(var i = 0; i < placesILived.length; i++) {
@@ -97,4 +86,4 @@ if (attempts == 1) {
 }
 
 // Show total number of correct answers to the user
-alert('You got ' + score + ' out of ' + questions.length + ' questions correct ' + user + '!');
+alert('You got ' + score + ' out of 7 questions correct ' + user + '!');
